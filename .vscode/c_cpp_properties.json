@@ -1,0 +1,41 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "",
+        "limitSymbolsToIncludedHeaders": true
+      },
+      "includePath": [
+        "/home/xianjia/catkin_ws/devel/include/**",
+        "/opt/ros/melodic/include/**",
+        "${workspaceFolder}/**",
+        "/home/xianjia/catkin_ws/src/3d_navigation/3d_nav_executive/include/**",
+        "/home/xianjia/catkin_ws/src/adaptive_lidar_tracking/include/**",
+        "/home/xianjia/catkin_ws/src/depth_obstacle/include/**",
+        "/home/xianjia/catkin_ws/src/fly_sim/include/**",
+        "/home/xianjia/catkin_ws/src/gazebo_tutorials/include/**",
+        "/home/xianjia/catkin_ws/src/Hector-Quadrotor/hector_gazebo/hector_gazebo_plugins/include/**",
+        "/home/xianjia/catkin_ws/src/Hector-Quadrotor/hector_gazebo/hector_gazebo_thermal_camera/include/**",
+        "/home/xianjia/catkin_ws/src/Hector-Quadrotor/hector_localization/hector_pose_estimation/include/**",
+        "/home/xianjia/catkin_ws/src/Hector-Quadrotor/hector_localization/hector_pose_estimation_core/include/**",
+        "/home/xianjia/catkin_ws/src/Hector-Quadrotor/hector_quadrotor/hector_quadrotor_controller/include/**",
+        "/home/xianjia/catkin_ws/src/Hector-Quadrotor/hector_quadrotor/hector_quadrotor_controller_gazebo/include/**",
+        "/home/xianjia/catkin_ws/src/Hector-Quadrotor/hector_quadrotor/hector_quadrotor_gazebo_plugins/include/**",
+        "/home/xianjia/catkin_ws/src/Hector-Quadrotor/hector_quadrotor/hector_quadrotor_model/include/**",
+        "/home/xianjia/catkin_ws/src/Hector-Quadrotor/hector_quadrotor/hector_quadrotor_,pose_estimation/include/**",
+        "/home/xianjia/catkin_ws/src/Hector-Quadrotor/hector_quadrotor/hector_uav_msgs/include/**",
+        "/home/xianjia/catkin_ws/src/3d_navigation/octomap_collision_check/include/**",
+        "/home/xianjia/catkin_ws/src/offboard-control/include/**",
+        "/home/xianjia/catkin_ws/src/3d_navigation/pose_follower_3d/include/**",
+        "/home/xianjia/catkin_ws/src/realsense-ros/realsense2_camera/include/**",
+        "/home/xianjia/catkin_ws/src/rf2o_laser_odometry/include/**",
+        "/home/xianjia/catkin_ws/src/robot_localization/include/**",
+        "/home/xianjia/catkin_ws/src/3d_navigation/sbpl_lattice_planner_layer_3d/include/**",
+        "/home/xianjia/catkin_ws/src/uwb_driver/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS"
+    }
+  ],
+  "version": 4
+}
