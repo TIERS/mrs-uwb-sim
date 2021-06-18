@@ -1,0 +1,7 @@
+devel/
+logs/
+build/
+bin/
+lib/
+
+.vscode
