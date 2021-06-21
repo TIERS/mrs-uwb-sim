@@ -6,7 +6,7 @@
 #include <gazebo/sensors/Noise.hh>
 #include <boost/bind.hpp>
 #include <ros/ros.h>
-#include <gtec_msgs/GenericRanging.h>
+#include "uwb_multi_robot_sim/GenericRanging.h"
 #include <geometry_msgs/PoseWithCovarianceStamped.h>
 #include <visualization_msgs/MarkerArray.h>
 #include <visualization_msgs/Marker.h>

@@ -51,16 +51,18 @@ find_package(catkin REQUIRED COMPONENTS
 
 ## Generate messages in the 'msg' folder
 add_message_files(
+  DIRECTORY
+    ./msg/gtec_msgs
   FILES
-  GenericRanging.msg
-  Ranging.msg
-  UWBRanging.msg
-  DWRanging.msg
-  PozyxRanging.msg
-  RangingDiff.msg
-  PozyxRangingWithCir.msg
-  ESP32S2FTMFrame.msg
-  ESP32S2FTMRanging.msg
+    GenericRanging.msg
+    Ranging.msg
+    UWBRanging.msg
+    DWRanging.msg
+    PozyxRanging.msg
+    RangingDiff.msg
+    PozyxRangingWithCir.msg
+    ESP32S2FTMFrame.msg
+    ESP32S2FTMRanging.msg
  )
 
 
@@ -81,8 +83,9 @@ add_message_files(
 ## Generate added messages and services with any dependencies listed here
 generate_messages(
   DEPENDENCIES
-  std_msgs  # Or other packages containing msgs
+  std_msgs  
 )
+
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -113,12 +116,13 @@ generate_messages(
 ## LIBRARIES: libraries you create in this project that dependent projects also need
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
-# catkin_package(
-# #  INCLUDE_DIRS include
-# #  LIBRARIES jackal_world
-# #  CATKIN_DEPENDS other_catkin_pkg
-#   DEPENDS gazebo_ros
-# )
+catkin_package(
+  DEPENDS 
+    roscpp 
+    gazebo_ros
+    message_runtime
+    std_msgs
+)
 
 ###########
 ## Build ##
@@ -134,7 +138,7 @@ include ${catkin_INCLUDE_DIRS} ${GAZEBO_INCLUDE_DIRS} ${SDFormat_INCLUDE_DIRS}
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/jackal_world.cpp
+#   src/uwb_plugin/${PROJECT_NAME}/jackal_world.cpp
 # )
 
 ## Add cmake target dependencies of the library
@@ -168,25 +172,19 @@ find_package(gazebo REQUIRED)
 link_directories(${GAZEBO_LIBRARY_DIRS})
 include_directories(${Boost_INCLUDE_DIR} ${catkin_INCLUDE_DIRS} ${GAZEBO_INCLUDE_DIRS})
 
-add_library(gtec_uwb_plugin src/UwbPlugin.cpp)
+add_library(gtec_uwb_plugin src/uwb_plugin/UwbPlugin.cpp)
 target_link_libraries(gtec_uwb_plugin ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES} ${Boost_LIBRARIES})
 add_dependencies(gtec_uwb_plugin ${catkin_EXPORTED_TARGETS})
 
-add_library(gtec_magnetic_distortion_plugin src/MagneticDistortionPlugin.cpp)
+add_library(gtec_magnetic_distortion_plugin src/uwb_plugin/MagneticDistortionPlugin.cpp)
 target_link_libraries(gtec_magnetic_distortion_plugin ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES} ${Boost_LIBRARIES})
 add_dependencies(gtec_magnetic_distortion_plugin ${catkin_EXPORTED_TARGETS})
 
-add_library(custom_skid_steer_drive src/CustomSkidSteerDrive.cpp src/CustomSkidSteerDrive.h)
+add_library(custom_skid_steer_drive src/uwb_plugin/CustomSkidSteerDrive.cpp src/uwb_plugin/CustomSkidSteerDrive.h)
 target_link_libraries(custom_skid_steer_drive ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES} ${Boost_LIBRARIES})
 add_dependencies(custom_skid_steer_drive ${catkin_EXPORTED_TARGETS})
 
-add_library(gtec_tag_pos_publisher_plugin src/TagPosPublisherPlugin.cpp)
+add_library(gtec_tag_pos_publisher_plugin src/uwb_plugin/TagPosPublisherPlugin.cpp)
 target_link_libraries(gtec_tag_pos_publisher_plugin ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES} ${Boost_LIBRARIES})
 add_dependencies(gtec_tag_pos_publisher_plugin ${catkin_EXPORTED_TARGETS})
 
-catkin_package(
-  DEPENDS 
-    roscpp 
-    gazebo_ros
-    # gtec_msgs
-)
