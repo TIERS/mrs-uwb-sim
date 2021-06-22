@@ -3,10 +3,37 @@ This is a repo to simulate the Ultra-wideband positioning system (global and rel
 
 ## Installation
 ### PX4 Flight Control
-GitHub link:
-https://github.com/PX4/PX4-Autopilot
+1. GitHub link
+    https://github.com/PX4/PX4-Autopilot
+2. Build 
+    ```
+    git clone https://github.com/PX4/PX4-Autopilot.git --recursive
+    make px4_sitl gazebo
+    ```
+   
+### Build uwb_multi_robot_sim package
+```
+catkin_make -DCATKIN_WHITELIST_PACKAGES="uwb_multi_robot_sim" -j$(nproc)
+```
+catkin_build is also fine. just choose the way you prefer.
+
+### Download more simulated worlds (Optional)
+
+
 
 ## Simulation Configuration
+### Add more mobile robot
+1. Open the launch file in ` ./launch/scenarios/scenarioDroneMobile_px4.launch`.
+2. Copy the code block shown in the launch file which looks like the picture below. 
+   ![Codes blocks needs to be added](./images/add_mobile_robot_conf.png)
+3. Change the configuration shown in the picture above
+### Add more drones
+1. Open the launch file in ` ./launch/scenarios/scenarioDroneMobile_px4.launch`.
+2. Copy the code block shown in the launch file which looks like the picture below. 
+   ![Codes blocks needs to be added](./images/add_drone_conf.png)
+3. Change the configuration shown in the picture above
+
+### Change environment around
 
 
 ## Simulation Launch
