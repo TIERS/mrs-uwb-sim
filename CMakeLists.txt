@@ -14,6 +14,13 @@ find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
   message_generation
+  geometry_msgs
+  mavros
+  mavros_msgs
+  nav_msgs
+  sensor_msgs
+  genmsg
+  actionlib_msgs
 ) 
 
 ## System dependencies are found with CMake's conventions
@@ -83,7 +90,8 @@ add_message_files(
 ## Generate added messages and services with any dependencies listed here
 generate_messages(
   DEPENDENCIES
-  std_msgs  
+  std_msgs
+  actionlib_msgs  
 )
 
 
@@ -131,7 +139,7 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
-# include
+include
 # ${catkin_INCLUDE_DIRS}
 include ${catkin_INCLUDE_DIRS} ${GAZEBO_INCLUDE_DIRS} ${SDFormat_INCLUDE_DIRS}
 )
@@ -166,8 +174,8 @@ include ${catkin_INCLUDE_DIRS} ${GAZEBO_INCLUDE_DIRS} ${SDFormat_INCLUDE_DIRS}
 #   ${catkin_LIBRARIES}
 # )
 
-# Depend on system install of Gazebo
-find_package(gazebo REQUIRED)
+add_executable(${PROJECT_NAME}_fly_node src/fly_simulate/fly_simulate_node.cpp)
+target_link_libraries(${PROJECT_NAME}_fly_node ${catkin_LIBRARIES})
 
 link_directories(${GAZEBO_LIBRARY_DIRS})
 include_directories(${Boost_INCLUDE_DIR} ${catkin_INCLUDE_DIRS} ${GAZEBO_INCLUDE_DIRS})

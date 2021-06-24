@@ -1,0 +1,20 @@
+# Define the goal
+# string  cmd_id
+float32 x
+float32 y
+float32 z
+float32 o_w
+float32 o_x
+float32 o_y
+float32 o_z
+float32 err_t 
+---
+# Define the result
+# string  cmd_id
+bool    is_reached
+---
+# Define a feedback message
+# string cmd_id
+float32 err_x
+float32 err_y
+float32 err_z

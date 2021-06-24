@@ -46,8 +46,20 @@ catkin_build is also fine. just choose the way you prefer.
 ```
 2. launch the UAV and UGV simulation scenario
 ```
-roslaunch uwb_multi_robot_sim scenarioDroneMobile_px4.launch
+    roslaunch uwb_multi_robot_sim scenarioDroneMobile_px4.launch
 ```
 
 ## Robot Control
+### PX Control Fly Simulate
+```
+    export ROS_NAMESPACE=uav0 # according to the robot you want to control
+    roslaunch uwb_multi_robot_sim fly_simulate.launch
+```
 
+### Keyboard Control
+
+
+```
+    export ROS_NAMESPACE=uav0 # according to the robot you want to control
+    rosrun teleop_twist_keyboard teleop_twist_keyboard.py
+``` 

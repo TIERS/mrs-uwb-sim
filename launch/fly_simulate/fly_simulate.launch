@@ -1,0 +1,4 @@
+<launch>
+    <node name="uwb_multi_robot_sim_fly_simulate" pkg="uwb_multi_robot_sim" type="uwb_multi_robot_sim_fly_node" respawn="true" output="screen">
+    </node>
+</launch>
