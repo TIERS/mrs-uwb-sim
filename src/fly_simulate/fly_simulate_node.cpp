@@ -147,12 +147,12 @@ void fly_sim::up_down_fly(const ros::TimerEvent& event){
             fly_server_.setPreempted();
         }
         else{
-            fly_simulate::FlyTaskResult result;
+            uwb_multi_robot_sim::FlyTaskResult result;
             result.is_reached = true;
             fly_server_.setSucceeded(result);
         }
 
-        fly_simulate::FlyTaskFeedback feedback;
+        uwb_multi_robot_sim::FlyTaskFeedback feedback;
         feedback.err_x = x_diff;
         feedback.err_y = y_diff;
         feedback.err_z = z_diff;
@@ -162,7 +162,7 @@ void fly_sim::up_down_fly(const ros::TimerEvent& event){
     }
 }
 
-void fly_sim::execute_cb(const actionlib::SimpleActionServer<fly_simulate::FlyTaskAction>::GoalConstPtr& goal){
+void fly_sim::execute_cb(const actionlib::SimpleActionServer<uwb_multi_robot_sim::FlyTaskAction>::GoalConstPtr& goal){
     target_pose_.pose.position.x = current_pose_.pose.position.x + goal->x;
     target_pose_.pose.position.y = current_pose_.pose.position.y + goal->y;
     target_pose_.pose.position.z = current_pose_.pose.position.z + goal->z;
