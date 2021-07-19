@@ -1,4 +1,4 @@
-# UWB Simulation in Multi-Robot Systems
+# Multi-robot localization with UWB - Gazebo Sim Plugin
 
 This is a repo to simulate the Ultra-wideband positioning system (global and relative) in multi-robot system.
 
