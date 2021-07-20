@@ -1,6 +1,0 @@
-<launch>
-  <include file="$(find uwb_multi_robot_sim)/launch/multi_jackal_empty_world.launch">
-    <arg name="world_name" value="$(find uwb_multi_robot_sim)/worlds/simple_world.world"/>
-    <arg name="joystick" value="false"/>
-  </include>
-</launch>
