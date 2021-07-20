@@ -10,7 +10,7 @@
 #include <std_srvs/SetBool.h>
 #include <std_msgs/String.h>
 
-#include "uwb_multi_robot_sim/FlyTaskAction.h"
+#include "mrs_uwb_sim/FlyTaskAction.h"
 #include <actionlib/server/simple_action_server.h>
 #include <actionlib/client/simple_action_client.h>
 
@@ -23,11 +23,11 @@ class fly_sim{
     private:
         ros::NodeHandle nh_;
 
-        actionlib::SimpleActionServer<uwb_multi_robot_sim::FlyTaskAction> fly_server_;
+        actionlib::SimpleActionServer<mrs_uwb_sim::FlyTaskAction> fly_server_;
 
-        uwb_multi_robot_sim::FlyTaskActionGoal goal_;
-        uwb_multi_robot_sim::FlyTaskActionResult result_;
-        uwb_multi_robot_sim::FlyTaskFeedback feedback_;
+        mrs_uwb_sim::FlyTaskActionGoal goal_;
+        mrs_uwb_sim::FlyTaskActionResult result_;
+        mrs_uwb_sim::FlyTaskFeedback feedback_;
 
         // mavros related
         ros::Subscriber state_sub_;
@@ -79,7 +79,7 @@ class fly_sim{
 
         void up_down_fly(const ros::TimerEvent& event);
 
-        void execute_cb(const actionlib::SimpleActionServer<uwb_multi_robot_sim::FlyTaskAction>::GoalConstPtr& goal);
+        void execute_cb(const actionlib::SimpleActionServer<mrs_uwb_sim::FlyTaskAction>::GoalConstPtr& goal);
 
         void state_cb(const mavros_msgs::State::ConstPtr& msg){
             current_state_ = *msg;

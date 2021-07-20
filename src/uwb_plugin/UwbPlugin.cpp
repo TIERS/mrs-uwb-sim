@@ -30,7 +30,7 @@ SOFTWARE.
 #include <gazebo/sensors/Noise.hh>
 #include <boost/bind.hpp>
 #include <ros/ros.h>
-#include "uwb_multi_robot_sim/Ranging.h"
+#include "mrs_uwb_sim/Ranging.h"
 #include <geometry_msgs/PoseWithCovarianceStamped.h>
 #include <visualization_msgs/MarkerArray.h>
 #include <visualization_msgs/Marker.h>
@@ -733,7 +733,7 @@ namespace gazebo
             ROS_INFO("GTEC UWB Plugin Anchors Position Publishing in %s", topicAnchors.c_str());
 
             ros::NodeHandle n;
-            this->gtecUwbPub = n.advertise<uwb_multi_robot_sim::Ranging>(topicRanging, 1000);
+            this->gtecUwbPub = n.advertise<mrs_uwb_sim::Ranging>(topicRanging, 1000);
             this->gtecAnchors = n.advertise<visualization_msgs::MarkerArray>(topicAnchors, 1000);
 
             this->firstRay = boost::dynamic_pointer_cast<physics::RayShape>(
@@ -1085,7 +1085,7 @@ namespace gazebo
 
                 if (losType!=NLOS)
                 {
-                    uwb_multi_robot_sim::Ranging ranging_msg;
+                    mrs_uwb_sim::Ranging ranging_msg;
                     ranging_msg.anchorId = aid;
                     ranging_msg.tagId = this->tagId;
                     ranging_msg.range = rangingValue;
