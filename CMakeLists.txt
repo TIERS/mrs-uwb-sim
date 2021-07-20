@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(uwb_multi_robot_sim)
+project(mrs_uwb_sim)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 add_compile_options(-std=c++11)

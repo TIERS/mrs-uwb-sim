@@ -1,6 +1,6 @@
-<?xml version="1.0"?>
+<?xml version="0.2"?>
 <package format="2">
-  <name>uwb_multi_robot_sim</name>
+  <name>mrs_uwb_sim</name>
   <version>0.0.0</version>
   <description>the uwb simulation for multi robot</description>
 
