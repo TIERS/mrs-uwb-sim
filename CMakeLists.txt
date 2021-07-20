@@ -131,6 +131,7 @@ catkin_package(
     gazebo_ros
     message_runtime
     std_msgs
+    actionlib_msgs
 )
 
 ###########
@@ -175,6 +176,7 @@ include ${catkin_INCLUDE_DIRS} ${GAZEBO_INCLUDE_DIRS} ${SDFormat_INCLUDE_DIRS}
 #   ${catkin_LIBRARIES}
 # )
 
+include_directories(${PROJECT_NAME}/include)
 add_executable(${PROJECT_NAME}_fly_node src/fly_simulate/fly_simulate_node.cpp)
 target_link_libraries(${PROJECT_NAME}_fly_node ${catkin_LIBRARIES})
 
