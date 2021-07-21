@@ -57,20 +57,20 @@ find_package(catkin REQUIRED COMPONENTS
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
 ## Generate messages in the 'msg' folder
-add_message_files(
-  DIRECTORY
-    ./msg/gtec_msgs
-  FILES
-    GenericRanging.msg
-    Ranging.msg
-    UWBRanging.msg
-    DWRanging.msg
-    PozyxRanging.msg
-    RangingDiff.msg
-    PozyxRangingWithCir.msg
-    ESP32S2FTMFrame.msg
-    ESP32S2FTMRanging.msg
- )
+# add_message_files(
+#   DIRECTORY
+#     ./msg/gtec_msgs
+#   FILES
+#     GenericRanging.msg
+#     Ranging.msg
+#     UWBRanging.msg
+#     DWRanging.msg
+#     PozyxRanging.msg
+#     RangingDiff.msg
+#     PozyxRangingWithCir.msg
+#     ESP32S2FTMFrame.msg
+#     ESP32S2FTMRanging.msg
+#  )
 
 
 ## Generate services in the 'srv' folder
@@ -81,19 +81,19 @@ add_message_files(
 # )
 
 # Generate actions in the 'action' folder
-add_action_files(
-  DIRECTORY
-  action
-  FILES
-  FlyTask.action
-)
+# add_action_files(
+#   DIRECTORY
+#   action
+#   FILES
+#   FlyTask.action
+# )
 
 ## Generate added messages and services with any dependencies listed here
-generate_messages(
-  DEPENDENCIES
-  std_msgs
-  actionlib_msgs  
-)
+# generate_messages(
+#   DEPENDENCIES
+#   std_msgs
+#   actionlib_msgs  
+# )
 
 
 ################################################
@@ -140,11 +140,11 @@ catkin_package(
 
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
-include_directories(
-include
-# ${catkin_INCLUDE_DIRS}
-include ${catkin_INCLUDE_DIRS} ${GAZEBO_INCLUDE_DIRS} ${SDFormat_INCLUDE_DIRS}
-)
+# include_directories(
+# include
+# # ${catkin_INCLUDE_DIRS}
+# include ${catkin_INCLUDE_DIRS} ${GAZEBO_INCLUDE_DIRS} ${SDFormat_INCLUDE_DIRS}
+# )
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
@@ -176,26 +176,26 @@ include ${catkin_INCLUDE_DIRS} ${GAZEBO_INCLUDE_DIRS} ${SDFormat_INCLUDE_DIRS}
 #   ${catkin_LIBRARIES}
 # )
 
-include_directories(${PROJECT_NAME}/include)
-add_executable(${PROJECT_NAME}_fly_node src/fly_simulate/fly_simulate_node.cpp)
-target_link_libraries(${PROJECT_NAME}_fly_node ${catkin_LIBRARIES})
+# include_directories(${PROJECT_NAME}/include)
+# # add_executable(${PROJECT_NAME}_fly_node src/fly_simulate/fly_simulate_node.cpp)
+# # target_link_libraries(${PROJECT_NAME}_fly_node ${catkin_LIBRARIES})
 
-link_directories(${GAZEBO_LIBRARY_DIRS})
-include_directories(${Boost_INCLUDE_DIR} ${catkin_INCLUDE_DIRS} ${GAZEBO_INCLUDE_DIRS})
+# link_directories(${GAZEBO_LIBRARY_DIRS})
+# include_directories(${Boost_INCLUDE_DIR} ${catkin_INCLUDE_DIRS} ${GAZEBO_INCLUDE_DIRS})
 
-add_library(gtec_uwb_plugin src/uwb_plugin/UwbPlugin.cpp)
-target_link_libraries(gtec_uwb_plugin ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES} ${Boost_LIBRARIES})
-add_dependencies(gtec_uwb_plugin ${catkin_EXPORTED_TARGETS})
+# add_library(gtec_uwb_plugin src/uwb_plugin/UwbPlugin.cpp)
+# target_link_libraries(gtec_uwb_plugin ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES} ${Boost_LIBRARIES})
+# add_dependencies(gtec_uwb_plugin ${catkin_EXPORTED_TARGETS})
 
-add_library(gtec_magnetic_distortion_plugin src/uwb_plugin/MagneticDistortionPlugin.cpp)
-target_link_libraries(gtec_magnetic_distortion_plugin ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES} ${Boost_LIBRARIES})
-add_dependencies(gtec_magnetic_distortion_plugin ${catkin_EXPORTED_TARGETS})
+# add_library(gtec_magnetic_distortion_plugin src/uwb_plugin/MagneticDistortionPlugin.cpp)
+# target_link_libraries(gtec_magnetic_distortion_plugin ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES} ${Boost_LIBRARIES})
+# add_dependencies(gtec_magnetic_distortion_plugin ${catkin_EXPORTED_TARGETS})
 
-add_library(custom_skid_steer_drive src/uwb_plugin/CustomSkidSteerDrive.cpp src/uwb_plugin/CustomSkidSteerDrive.h)
-target_link_libraries(custom_skid_steer_drive ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES} ${Boost_LIBRARIES})
-add_dependencies(custom_skid_steer_drive ${catkin_EXPORTED_TARGETS})
+# add_library(custom_skid_steer_drive src/uwb_plugin/CustomSkidSteerDrive.cpp src/uwb_plugin/CustomSkidSteerDrive.h)
+# target_link_libraries(custom_skid_steer_drive ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES} ${Boost_LIBRARIES})
+# add_dependencies(custom_skid_steer_drive ${catkin_EXPORTED_TARGETS})
 
-add_library(gtec_tag_pos_publisher_plugin src/uwb_plugin/TagPosPublisherPlugin.cpp)
-target_link_libraries(gtec_tag_pos_publisher_plugin ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES} ${Boost_LIBRARIES})
-add_dependencies(gtec_tag_pos_publisher_plugin ${catkin_EXPORTED_TARGETS})
+# add_library(gtec_tag_pos_publisher_plugin src/uwb_plugin/TagPosPublisherPlugin.cpp)
+# target_link_libraries(gtec_tag_pos_publisher_plugin ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES} ${Boost_LIBRARIES})
+# add_dependencies(gtec_tag_pos_publisher_plugin ${catkin_EXPORTED_TARGETS})
 
