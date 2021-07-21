@@ -1,5 +1,5 @@
 <launch>
-    <arg name="ns" default="drone2" />
+    <arg name="ns" default="droneX" />
     <arg name="anchor_id" default="100"/>
 
     <arg name="x" default="0" />

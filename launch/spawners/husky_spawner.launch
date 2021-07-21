@@ -44,7 +44,8 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
   <group ns="$(arg robot_namespace)">
 
     <group if="$(arg multimaster)">
-      <include file="$(find husky_description)/launch/description.launch" >
+      <!-- <include file="$(find husky_description)/launch/description.launch" > -->
+      <include file="$(find mrs_uwb_sim)/launch/husky/husky_description.launch" >
         <arg name="robot_namespace" value="$(arg robot_namespace)"/>
         <arg name="laser_enabled" default="$(arg laser_enabled)"/>
         <arg name="realsense_enabled" default="$(arg realsense_enabled)"/>
@@ -63,7 +64,8 @@ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSI
     <!-- For single master bringup, run robot control on the gazebo master -->
     <!-- Note that husky_description/description.launch is already included in husky_control/control.launch. -->
     <group unless="$(arg multimaster)">
-      <include file="$(find husky_control)/launch/control.launch">
+      <!-- <include file="$(find husky_control)/launch/control.launch"> -->
+      <include file="$(find mrs_uwb_sim)/launch/husky/husky_control.launch">
         <arg name="multimaster" value="$(arg multimaster)"/>
         <arg name="laser_enabled" value="$(arg laser_enabled)"/>
         <arg name="realsense_enabled" default="$(arg realsense_enabled)"/>

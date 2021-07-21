@@ -3,9 +3,9 @@
     <!-- MAVROS posix SITL environment launch script -->
     <!-- launches Gazebo environment and 2x: MAVROS, PX4 SITL, and spawns vehicle -->
     <!-- vehicle model and world -->
-    <arg name="ns" default="drone2" />
+    <arg name="ns" default="uavX" />
     <arg name="anchor_id" default="100" />
-    <arg name="ID" default="0"/>
+    <arg name="ID" default="X"/>
     <arg name="vehicle" default="iris"/>
     <arg name="mavlink_udp_port" default="14560"/>
     <arg name="mavlink_tcp_port" default="4560" />
