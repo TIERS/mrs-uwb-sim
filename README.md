@@ -43,7 +43,7 @@ catkin_build is also fine. just choose the way you prefer.
 ## Simulation Launch
 1. Set PX4 environment
 ```
-cd PX4_Autopilot
+cd PX4-Autopilot
 source Tools/setup_gazebo.bash $(pwd) $(pwd)/build/px4_sitl_default
 export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:$(pwd)
 export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:$(pwd)/Tools/sitl_gazebo
