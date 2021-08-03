@@ -1,10 +1,24 @@
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 # Multi-robot UGVs+UAVs with UWB | Gazebo Sim
+
+
+| Status  |
+|---------|
+| ![ROS Melodic build badge](https://github.com/TIERS/mrs-uwb-sim/actions/workflows/melodic.yml/badge.svg) |
+
+
+## Description
 
 This is a repo to simulate the Ultra-wideband positioning system (global and relative) in multi-robot system.
 
 ## Installation
 
-### PX4 Flight Control
+### Clone this repo
+
+### Add the PX4 Firmware to the catkin ws for SITL simulation
+
 1. GitHub link
     https://github.com/PX4/PX4-Autopilot
 2. Build 
