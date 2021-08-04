@@ -16,9 +16,6 @@
 
 #include <gazebo_msgs/ModelStates.h>
 
-#include <tf2_geometry_msgs/tf2_geometry_msgs.h>
-
-
 /*
     Struct to store a range to be calculated
     including two models (nodes) and the ID of
