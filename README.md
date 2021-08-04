@@ -15,6 +15,8 @@ Gazebo simulations for relative UWB-based localization. Focus on modeling UWB no
 
 The simulator uses ClearPath Husky robots as ground units and PX4 iris quadrotors as aerial units with SITL simulation.
 
+![Simulator screenshot](./images/sim_view.png)
+
 ## Dependencies
 
 This package depends on `mavros` and `husky_gazebo` mainly. Install dependencies for ROS Melodic:
