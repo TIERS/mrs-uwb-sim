@@ -222,18 +222,6 @@ void UWBSimulator::publish_ranges(const ros::TimerEvent& event)
 
         elem.second.publish(r);
 
-        // tf::TransformListener listener;
-        // tf::StampedTransform transform;
-        // try{
-        //     listener.lookupTransform("/world", "/" + elem.first.node_ori, ros::Time(0), transform);
-        // }
-        // catch (tf::TransformException ex){
-        //     ROS_ERROR("%s",ex.what());
-        //     ros::Duration(1.0).sleep();
-        //     std::cout << "Could not find TF !" << std::endl;
-        // }
-        // tf2::doTransform()
-
     }
 }
 
