@@ -12,12 +12,9 @@
     <arg name="default_config" value="base" unless="$(arg front_laser)" />
     <!-- end of hack -->
 
-    <!-- Configuration of Jackal which you would like to simulate.
-        See jackal_description for details. -->
+    <!-- Configuration of Husky which you would like to simulate.
+        See husky_description for details. -->
     <arg name="config" default="$(arg default_config)" />
-
-    <!-- Optionally enable teleop for the simulation -->
-    <arg name="joystick" default="true" />
 
     <!-- Launch Gazebo with the specified world -->
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
@@ -31,12 +28,6 @@
 
     <arg name="laser_enabled" default="$(optenv HUSKY_LMS1XX_ENABLED 0)"/>
     <arg name="realsense_enabled" default="$(optenv HUSKY_REALSENSE_ENABLED 0)"/>
-
-    <!-- <include file="$(find husky_gazebo)/launch/spawn_husky.launch">
-        <arg name="laser_enabled" value="$(arg laser_enabled)"/>
-        <arg name="realsense_enabled" value="$(arg realsense_enabled)"/>
-    </include> -->
-
 
     <include file="$(find mrs_uwb_sim)/launch/spawners/single_husky_spawner.launch">
         <arg name="x" value="-3.1415" />
@@ -54,39 +45,43 @@
         <arg name="realsense_enabled" value="$(arg realsense_enabled)"/>
     </include>
 
+    <group ns="uav0">
+        <include file="$(find mrs_uwb_sim)/launch/spawners/px4_sitl_uav_mavros_spawner.launch">
+            <arg name="x" value="-10" />
+            <arg name="y" value="-5" />
+            <arg name="ID" value="0"/>
+            <arg name="mavlink_udp_port" value="14560"/>
+            <arg name="mavlink_tcp_port" value="4560" />
+            <arg name="vehicle" value="iris"/>
+            <arg name="ns" value="uav0" />
+            <arg name="fcu_url" value="udp://:14540@localhost:14580"/>
+        </include>
+    </group>
 
-    <include file="$(find mrs_uwb_sim)/launch/spawners/px4_sitl_uav_mavros_spawner.launch">
-        <arg name="x" value="-10" />
-        <arg name="y" value="-5" />
-        <arg name="ID" value="0"/>
-        <arg name="mavlink_udp_port" value="14560"/>
-        <arg name="mavlink_tcp_port" value="4560" />
-        <arg name="vehicle" value="iris"/>
-        <arg name="ns" default="uav0" />
-        <arg name="fcu_url" value="udp://:14540@localhost:14580"/>
-    </include>
+    <group ns="uav1">
+        <include file="$(find mrs_uwb_sim)/launch/spawners/px4_sitl_uav_mavros_spawner.launch">
+            <arg name="x" value="0" />
+            <arg name="y" value="-7" />
+            <arg name="ID" value="1"/>
+            <arg name="mavlink_udp_port" value="14561"/>
+            <arg name="mavlink_tcp_port" value="4561" />
+            <arg name="vehicle" value="iris"/>
+            <arg name="ns" value="uav1" />
+            <arg name="fcu_url" value="udp://:14541@localhost:14581"/>
+        </include>
+    </group>
 
-    <!-- <include file="$(find mrs_uwb_sim)/launch/spawners/px4_sitl_uav_mavros_spawner.launch">
-        <arg name="x" value="0" />
-        <arg name="y" value="-7" />
-        <arg name="ID" value="1"/>
-        <arg name="mavlink_udp_port" value="14561"/>
-        <arg name="mavlink_tcp_port" value="4561" />
-        <arg name="vehicle" value="iris"/>
-        <arg name="ns" default="uav1" />
-        <arg name="fcu_url" value="udp://:14541@localhost:14581"/>
-    </include>
-
-
-    <include file="$(find mrs_uwb_sim)/launch/spawners/px4_sitl_uav_mavros_spawner.launch">
-        <arg name="x" value="4" />
-        <arg name="y" value="-10" />
-        <arg name="ID" value="2"/>
-        <arg name="mavlink_udp_port" value="14562"/>
-        <arg name="mavlink_tcp_port" value="4562" />
-        <arg name="vehicle" value="iris"/>
-        <arg name="ns" default="uav2" />
-        <arg name="fcu_url" value="udp://:14542@localhost:14582"/>
-    </include> -->
+    <group ns="uav2">
+        <include file="$(find mrs_uwb_sim)/launch/spawners/px4_sitl_uav_mavros_spawner.launch">
+            <arg name="x" value="4" />
+            <arg name="y" value="-10" />
+            <arg name="ID" value="2"/>
+            <arg name="mavlink_udp_port" value="14562"/>
+            <arg name="mavlink_tcp_port" value="4562" />
+            <arg name="vehicle" value="iris"/>
+            <arg name="ns" value="uav2" />
+            <arg name="fcu_url" value="udp://:14542@localhost:14582"/>
+        </include>
+    </group>
 
 </launch>
