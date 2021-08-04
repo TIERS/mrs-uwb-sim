@@ -10,6 +10,8 @@
 
 #include <ros/ros.h>
 
+#include <std_msgs/Float64.h>
+
 #include <sensor_msgs/Range.h>
 
 #include <geometry_msgs/Pose.h>
@@ -72,7 +74,10 @@ class UWBSimulator
         // UWB
         double duty_cycle_;
         double max_twr_freq_;
-        
+
+        // Publish settings
+        bool publish_as_float_;
+
         // Topic names
         std::string ground_truth_topic_;
         std::string pub_topic_prefix_;

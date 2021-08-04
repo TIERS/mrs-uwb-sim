@@ -6,12 +6,15 @@ UWBSimulator::UWBSimulator(ros::NodeHandle& nh)
     ROS_INFO_STREAM("Test");
     
     // Topics
-    nh.param<std::string>("ground_truth_topic", ground_truth_topic_, "/gazebo/model_states");
-    nh.param<std::string>("pub_topic_prefix", pub_topic_prefix_, "/uwb");
+    nh.param<std::string>("/uwbsimulator/ground_truth_topic", ground_truth_topic_, "/gazebo/model_states");
+    nh.param<std::string>("/uwbsimulator/pub_topic_prefix", pub_topic_prefix_, "/uwb");
 
     // UWB global params
-    nh.param<double>("duty_cycle", duty_cycle_, 1);
-    nh.param<double>("max_twr_freq", max_twr_freq_, 400);
+    nh.param<double>("/uwbsimulator/duty_cycle", duty_cycle_, 1);
+    nh.param<double>("/uwbsimulator/max_twr_freq", max_twr_freq_, 400);
+
+    // Publish settings
+    nh.param<bool>("/uwbsimulator/publish_as_float", publish_as_float_, false);
 
     // Models
     nh.param<std::vector<std::string>>("/uwbsimulator/model_names", model_names_, std::vector<std::string>());
@@ -104,15 +107,31 @@ UWBSimulator::UWBSimulator(ros::NodeHandle& nh)
                 );
 
                 // Create publisher object
-                uwb_publishers_.insert(
-                    std::pair<range_publisher, ros::Publisher>(
-                        rpub,
-                        nh.advertise<sensor_msgs::Range>(
-                            pub_topic_prefix_ + "/from/" + ori + "/" + uwb_node_names_[ori][i] + "/to/" + end + "/" +  uwb_node_names_[end][j], 
-                            10
+                if (publish_as_float_)
+                {
+                    uwb_publishers_.insert(
+                        std::pair<range_publisher, ros::Publisher>(
+                            rpub,
+                            nh.advertise<std_msgs::Float64>(
+                                pub_topic_prefix_ + "/from/" + ori + "/" + uwb_node_names_[ori][i] + "/to/" + end + "/" +  uwb_node_names_[end][j], 
+                                10
+                            )
                         )
-                    )
-                );
+                    );
+                }
+
+                else
+                {
+                    uwb_publishers_.insert(
+                        std::pair<range_publisher, ros::Publisher>(
+                            rpub,
+                            nh.advertise<sensor_msgs::Range>(
+                                pub_topic_prefix_ + "/from/" + ori + "/" + uwb_node_names_[ori][i] + "/to/" + end + "/" +  uwb_node_names_[end][j], 
+                                10
+                            )
+                        )
+                    );
+                }
             }
         }
     }
@@ -204,16 +223,25 @@ void UWBSimulator::publish_ranges(const ros::TimerEvent& event)
     
         double real_range = boost::geometry::distance(v_ori, v_end);
 
-        sensor_msgs::Range r = sensor_msgs::Range();
-        r.header.stamp = ros::Time::now();
-        r.radiation_type = 2;
-        r.field_of_view = 0;
-        r.min_range = 0.2;
-        r.max_range = 42;
-        r.range = real_range;
+        if (publish_as_float_)
+        {
+            std_msgs::Float64 f = std_msgs::Float64();
+            f.data = real_range;
 
-        elem.second.publish(r);
+            elem.second.publish(f);
+        }
+        else 
+        {
+            sensor_msgs::Range r = sensor_msgs::Range();
+            r.header.stamp = ros::Time::now();
+            r.radiation_type = 2;
+            r.field_of_view = 0;
+            r.min_range = 0.2;
+            r.max_range = 42;
+            r.range = real_range;
 
+            elem.second.publish(r);
+        }
     }
 }
 
@@ -225,7 +253,7 @@ int main(int argc, char **argv)
     ros::NodeHandle nh;
     UWBSimulator uwb_ranging_sim = UWBSimulator(nh);
 
-    ros::Timer timer = nh.createTimer(ros::Duration(0.2), &UWBSimulator::publish_ranges, &uwb_ranging_sim);
+    ros::Timer timer = nh.createTimer(ros::Duration(0.05), &UWBSimulator::publish_ranges, &uwb_ranging_sim);
     ros::spin();
 
     return 0;
