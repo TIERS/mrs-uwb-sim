@@ -138,14 +138,6 @@ void UWBSimulator::ground_truth_callback(const gazebo_msgs::ModelStates::ConstPt
             // Update model pose
             int idx = std::distance(all_models.begin(), model_idx); 
             models_gt_[model] = all_poses[idx];
-
-            // Broadcast transform
-            // tf::Transform transform;
-            // transform.setOrigin( tf::Vector3(all_poses[idx].position.x, all_poses[idx].position.y, all_poses[idx].position.z) );
-            // tf::Quaternion q;
-            // tf2::convert(all_poses[idx].orientation , q);
-            // transform.setRotation(q);
-            // br.sendTransform(tf::StampedTransform(transform, ros::Time::now(), "world", model));
         }
     }
     
