@@ -24,8 +24,6 @@ find_package(catkin REQUIRED COMPONENTS
   tiers_ros_msgs
 ) 
 
-
-
 ###################################
 ## catkin specific configuration ##
 ###################################
@@ -73,23 +71,4 @@ target_link_libraries(${PROJECT_NAME}_uwbsimulator
 # include_directories(${PROJECT_NAME}/include)
 # # add_executable(${PROJECT_NAME}_fly_node src/fly_simulate/fly_simulate_node.cpp)
 # # target_link_libraries(${PROJECT_NAME}_fly_node ${catkin_LIBRARIES})
-
-# link_directories(${GAZEBO_LIBRARY_DIRS})
-# include_directories(${Boost_INCLUDE_DIR} ${catkin_INCLUDE_DIRS} ${GAZEBO_INCLUDE_DIRS})
-
-# add_library(gtec_uwb_plugin src/uwb_plugin/UwbPlugin.cpp)
-# target_link_libraries(gtec_uwb_plugin ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES} ${Boost_LIBRARIES})
-# add_dependencies(gtec_uwb_plugin ${catkin_EXPORTED_TARGETS})
-
-# add_library(gtec_magnetic_distortion_plugin src/uwb_plugin/MagneticDistortionPlugin.cpp)
-# target_link_libraries(gtec_magnetic_distortion_plugin ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES} ${Boost_LIBRARIES})
-# add_dependencies(gtec_magnetic_distortion_plugin ${catkin_EXPORTED_TARGETS})
-
-# add_library(custom_skid_steer_drive src/uwb_plugin/CustomSkidSteerDrive.cpp src/uwb_plugin/CustomSkidSteerDrive.h)
-# target_link_libraries(custom_skid_steer_drive ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES} ${Boost_LIBRARIES})
-# add_dependencies(custom_skid_steer_drive ${catkin_EXPORTED_TARGETS})
-
-# add_library(gtec_tag_pos_publisher_plugin src/uwb_plugin/TagPosPublisherPlugin.cpp)
-# target_link_libraries(gtec_tag_pos_publisher_plugin ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES} ${Boost_LIBRARIES})
-# add_dependencies(gtec_tag_pos_publisher_plugin ${catkin_EXPORTED_TARGETS})
 
