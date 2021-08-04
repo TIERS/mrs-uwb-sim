@@ -4,6 +4,11 @@ project(mrs_uwb_sim)
 ## Compile as C++11, supported in ROS Kinetic and newer
 add_compile_options(-std=c++11)
 
+## System dependencies are found with CMake's conventions
+find_package(
+  Boost 
+)
+
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
@@ -22,6 +27,7 @@ find_package(catkin REQUIRED COMPONENTS
   genmsg
   actionlib_msgs
   tiers_ros_msgs
+  gazebo_msgs
 ) 
 
 ###################################
@@ -29,11 +35,18 @@ find_package(catkin REQUIRED COMPONENTS
 ###################################
 
 catkin_package(
+  INCLUDE_DIRS include
+  LIBRARIES mrs_uwb_sim
   DEPENDS 
+    mavros
+    mavros_msgs
     roscpp 
     gazebo_ros
     message_runtime
     std_msgs
+    gazebo_msgs
+    sensor_msgs
+    geometry_msgs
     actionlib_msgs
     tiers_ros_msgs
 )
@@ -64,8 +77,15 @@ set_target_properties(
 )
 
 ## Link a library or executable target against
-target_link_libraries(${PROJECT_NAME}_uwbsimulator
+target_link_libraries(
+  ${PROJECT_NAME}_uwbsimulator
   ${catkin_LIBRARIES}
+)
+
+target_link_libraries(
+  ${PROJECT_NAME}_uwbsimulator 
+  ${Boost_FILESYSTEM_LIBRARY} 
+  ${Boost_SYSTEM_LIBRARY} 
 )
 
 # include_directories(${PROJECT_NAME}/include)
