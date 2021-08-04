@@ -26,6 +26,10 @@
         <arg name="world_name" value="$(arg world_name)" />
     </include>
 
+    <node name="uwbsimulator" pkg="mrs_uwb_sim" type="uwbsimulator" respawn="false" output="screen">
+        <rosparam file="$(find mrs_uwb_sim)/config/uwbsimulator.yaml" command="load"/>
+    </node>
+
     <arg name="laser_enabled" default="$(optenv HUSKY_LMS1XX_ENABLED 0)"/>
     <arg name="realsense_enabled" default="$(optenv HUSKY_REALSENSE_ENABLED 0)"/>
 
