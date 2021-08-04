@@ -45,9 +45,9 @@ To be able to launch aerial units in the simulator, we use PX4 and its SITL simu
 
 In your catkin workspace, download the PX4 Autopilot stack and built the sitl simulation files:
 ```
-    cd ~/mrs_uwb_sim_ws
-    git clone https://github.com/PX4/PX4-Autopilot.git --recursive
-    make px4_sitl gazebo
+cd ~/mrs_uwb_sim_ws
+git clone https://github.com/PX4/PX4-Autopilot.git --recursive
+make px4_sitl gazebo
 ```
    
 ## Launch simulation
@@ -55,27 +55,27 @@ In your catkin workspace, download the PX4 Autopilot stack and built the sitl si
 Before launching the simulations, you will need to source PX4 files on top of the `devel/setup,bash`.
 A script in this repo does both. Move it to your workspace root and source it:
 ```
-    mv ~/mrs_uwb_sim_ws/src/mrs-uwb-sim/source_all.bash
-    cd ~/mrs_uwb_sim_ws
-    source source_all.bash
+mv ~/mrs_uwb_sim_ws/src/mrs-uwb-sim/source_all.bash
+cd ~/mrs_uwb_sim_ws
+source source_all.bash
 ```
 
 Alternatively, you will need to run the following:
 ```
-    cd PX4-Autopilot
-    source Tools/setup_gazebo.bash $(pwd) $(pwd)/build/px4_sitl_default
-    export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:$(pwd)
-    export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:$(pwd)/Tools/sitl_gazebo
+cd PX4-Autopilot
+source Tools/setup_gazebo.bash $(pwd) $(pwd)/build/px4_sitl_default
+export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:$(pwd)
+export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:$(pwd)/Tools/sitl_gazebo
 ```
 
 Now you can directly:
 ```
-    roslaunch mrs_uwb_sim tiers_mrs_px4.launch
+roslaunch mrs_uwb_sim tiers_mrs_px4.launch
 ```
 
 To launch only the UWB simulator (for example while running a rosbag recorded with Gazebo):
 ```
-    roslaunch mrs_uwb_sim uwb_sim.launch
+roslaunch mrs_uwb_sim uwb_sim.launch
 ```
 
 ## UWB Ranging simulation and configuration
