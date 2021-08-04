@@ -1,0 +1,9 @@
+<launch>
+
+    <arg name="use_sim_time" default="true" />
+
+    <node name="uwbsimulator" pkg="mrs_uwb_sim" type="uwbsimulator" respawn="false" output="screen">
+        <rosparam file="$(find mrs_uwb_sim)/config/uwbsimulator.yaml" command="load"/>
+    </node>
+
+</launch>

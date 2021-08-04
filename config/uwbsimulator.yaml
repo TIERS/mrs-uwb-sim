@@ -1,0 +1,78 @@
+# Gazebo
+ground_truth_topic: "/gazebo/model_states"    # Topic where Gazebo publishes ground truth of all models
+
+# Models
+model_names: [
+  "husky0", 
+  "husky1", 
+  "iris0", 
+  "iris1", 
+  "iris2"
+]
+
+# UWB Nodes
+uwb_nodes:
+  husky0:
+    num: 4
+    poses: [
+      -0.2, -0.2, 0,
+      -0.2, 0.2, 0,
+      0.2, 0.2, 0, 
+      -0.2, -0.2, 0
+    ]
+    names: [
+      "A",
+      "B",
+      "C",
+      "D",
+    ]
+  husky1:
+    num: 4
+    poses: [
+      -0.2, -0.2, 0,
+      -0.2, 0.2, 0,
+      0.2, 0.2, 0, 
+      -0.2, -0.2, 0
+    ]
+    names: [
+      "A",
+      "B",
+      "C",
+      "D",
+    ]
+  iris0:
+    num: 1
+    poses: [
+      0, 0, 0
+    ]
+    names: [
+      "dronie"
+    ]
+  iris1:
+    num: 1
+    poses: [
+      0, 0, 0
+    ]
+    names: [
+      "dronie"
+    ]
+  iris2:
+    num: 1
+    poses: [
+      0, 0, 0
+    ]
+    names: [
+      "dronie"
+    ]
+
+# UWB ranges to be computed
+uwb_ranges: [
+  "husky0+iris0",
+  "husky0+iris1",
+  "husky1+iris2"
+]
+
+# Global UWB params
+pub_topic_prefix: "/uwb"                     # Topic to be completed with source+name+destination+name
+max_twr_freq: 400                             # Max number of 1-to-1 ranging measurements
+duty_cycle: 1                                 # Portion of max twr messages to be modeled
