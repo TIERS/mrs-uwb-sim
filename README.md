@@ -11,31 +11,76 @@
 
 ## Description
 
-This is a repo to simulate the Ultra-wideband positioning system (global and relative) in multi-robot system.
+Gazebo simulations for relative UWB-based localization. Focus on modeling UWB noise cause by ground and aerial robots in addition to their environment.
+
+The simulator uses ClearPath Husky robots as ground units and PX4 iris quadrotors as aerial units with SITL simulation.
+
+## Dependencies
+
+This package depends on `mavros` and `husky_gazebo` mainly. Install dependencies for ROS Melodic:
+```
+sudo apt install ros-melodic-mavros ros-melodic-mavros-extras \
+    ros-melodic-husky-gazebo
+```
 
 ## Installation
 
-### Clone this repo
+Create a catkin workspace
+```
+mkdir -p ~/mrs_uwb_sim_ws/src
+cd mrs_uwb_sim_ws/src
+```
 
-### Add the PX4 Firmware to the catkin ws for SITL simulation
+Clone this repository and the `tiers_ros_msgs` dependency:
+```
+git clone git@github.com:TIERS/mrs-uwb-sim.git
+git clone https://github.com/TIERS/tiers-ros-msgs
+```
 
-1. GitHub link
-    https://github.com/PX4/PX4-Autopilot
-2. Build 
-    ```
+Build it using `caktkin build` (recommended).
+
+## Download PX4
+
+To be able to launch aerial units in the simulator, we use PX4 and its SITL simulation.
+
+In your catkin workspace, download the PX4 Autopilot stack and built the sitl simulation files:
+```
+    cd ~/mrs_uwb_sim_ws
     git clone https://github.com/PX4/PX4-Autopilot.git --recursive
     make px4_sitl gazebo
-    ```
+```
    
-### Build uwb_multi_robot_sim package
+## Launch simulation
+
+Before launching the simulations, you will need to source PX4 files on top of the `devel/setup,bash`.
+A script in this repo does both. Move it to your workspace root and source it:
 ```
-catkin_make -DCATKIN_WHITELIST_PACKAGES="uwb_multi_robot_sim" -j$(nproc)
+    mv ~/mrs_uwb_sim_ws/src/mrs-uwb-sim/source_all.bash
+    cd ~/mrs_uwb_sim_ws
+    source source_all.bash
 ```
-catkin_build is also fine. just choose the way you prefer.
 
-### Download more simulated worlds (Optional)
+Alternatively, you will need to run the following:
+```
+    cd PX4-Autopilot
+    source Tools/setup_gazebo.bash $(pwd) $(pwd)/build/px4_sitl_default
+    export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:$(pwd)
+    export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:$(pwd)/Tools/sitl_gazebo
+```
 
+Now you can directly:
+```
+    roslaunch mrs_uwb_sim tiers_mrs_px4.launch
+```
 
+To launch only the UWB simulator (for example while running a rosbag recorded with Gazebo):
+```
+    roslaunch mrs_uwb_sim uwb_sim.launch
+```
+
+## UWB Ranging simulation and configuration
+
+`TODO`
 
 ## Simulation Configuration
 
