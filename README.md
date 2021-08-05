@@ -82,23 +82,30 @@ roslaunch mrs_uwb_sim uwb_sim.launch
 
 ## UWB Ranging simulation and configuration
 
+The basic parameters defining the position are the following:
+- `model_names`: list of Gazebo model names where UWB nodes are simulated to be.
+- `uwb_nodes`: list of UWB nodes per model, including the number, their positions relative to the model position and the names (used for the ranging topic names).
+- `uwb_ranges`: list of UWB ranges to be calculated and published.
+
+![Simulator screenshot](./images/config_sample.png)
+
+### UWB noise simulation
+
 `TODO`
-
-## Simulation Configuration
-
-### Add more mobile robot
+### Add more mobile robots (Husky)
 1. Open the launch file in ` ./launch/scenarios/scenarioDroneMobile_px4.launch`.
 2. Copy the code block shown in the launch file which looks like the picture below. 
    ![Codes blocks needs to be added](./images/add_mobile_robot_conf.png)
 3. Change the configuration shown in the picture above
 
-### Add more drones
+### Add more drones (PX4-based)
 1. Open the launch file in ` ./launch/scenarios/scenarioDroneMobile_px4.launch`.
 2. Copy the code block shown in the launch file which looks like the picture below. 
    ![Codes blocks needs to be added](./images/add_drone_conf.png)
 3. Change the configuration shown in the picture above
 
-### Change environment around
+### Change Gazebo world
+
 `TO DO`
 
 ## Simulation Launch
