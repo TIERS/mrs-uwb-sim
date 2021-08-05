@@ -51,6 +51,12 @@ cd ~/mrs_uwb_sim_ws
 git clone https://github.com/PX4/PX4-Autopilot.git --recursive
 make px4_sitl gazebo
 ```
+
+Copy the modified quadrotos __sdf__ file:
+```
+mv ~/mrs_uwb_sim_ws/PX4-Autopilot/Tools/sitl_gazebo/models/iris/iris.sdf.jinja ~/mrs_uwb_sim_ws/PX4-Autopilot/Tools/sitl_gazebo/models/iris/iris.sdf.jinja.old
+mv ~/mrs_uwb_sim_ws/src/mrs-uwb-sim/models/sdf/iris.sdf.jinja ~/mrs_uwb_sim_ws/PX4-Autopilot/Tools/sitl_gazebo/models/iris/iris.sdf.jinja
+```
    
 ## Launch simulation
 
