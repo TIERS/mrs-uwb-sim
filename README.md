@@ -22,7 +22,17 @@ The simulator uses ClearPath Husky robots as ground units and PX4 iris quadrotor
 This package depends on `mavros` and `husky_gazebo` mainly. Install dependencies for ROS Melodic:
 ```
 sudo apt install ros-melodic-mavros ros-melodic-mavros-extras \
-    ros-melodic-husky-gazebo
+    ros-melodic-husky-gazebo python-pip python-dev python3-pip python3-dev \
+    libgstreamer-plugins-base1.0-dev gstreamer1.0-plugins-bad gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-ugly
+
+    
+sudo -H python3 -m pip install empy jinja2 packaging toml numpy
+```
+
+Other dependencies
+```
+wget https://raw.githubusercontent.com/mavlink/mavros/master/mavros/scripts/install_geographiclib_datasets.sh
+sudo bash ./install_geographiclib_datasets.sh
 ```
 
 ## Installation
@@ -49,7 +59,8 @@ In your catkin workspace, download the PX4 Autopilot stack and built the sitl si
 ```
 cd ~/mrs_uwb_sim_ws
 git clone https://github.com/PX4/PX4-Autopilot.git --recursive
-make px4_sitl gazebo
+cd PX4-Autopilot
+DONT_RUN=1 make px4_sitl gazebo
 ```
 
 Copy the modified quadrotos __sdf__ file:
