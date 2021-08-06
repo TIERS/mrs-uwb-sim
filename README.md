@@ -21,7 +21,7 @@ The simulator uses ClearPath Husky robots as ground units and PX4 iris quadrotor
 
 This package depends on `mavros` and `husky_gazebo` mainly. Install dependencies for ROS Melodic:
 ```
-sudo apt install ros-melodic-mavros ros-melodic-mavros-extras \
+sudo apt install ros-melodic-mavros ros-melodic-mavros-extras python-catkin-tools \
     ros-melodic-husky-gazebo python-pip python-dev python3-pip python3-dev \
     libgstreamer-plugins-base1.0-dev gstreamer1.0-plugins-bad gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-ugly
 
@@ -49,7 +49,10 @@ git clone git@github.com:TIERS/mrs-uwb-sim.git
 git clone https://github.com/TIERS/tiers-ros-msgs
 ```
 
-Build it using `caktkin build` (recommended).
+Build it (`catkin` recommended):
+```
+catkin build
+```
 
 ## Download PX4
 
