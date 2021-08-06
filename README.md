@@ -26,7 +26,7 @@ sudo apt install ros-melodic-mavros ros-melodic-mavros-extras \
     libgstreamer-plugins-base1.0-dev gstreamer1.0-plugins-bad gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-ugly
 
     
-sudo -H python3 -m pip install empy jinja2 packaging toml numpy
+sudo -H python3 -m pip install empy jinja2 packaging toml numpy jsonschema
 ```
 
 Other dependencies
