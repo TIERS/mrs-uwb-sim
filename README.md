@@ -74,7 +74,7 @@ mv ~/mrs_uwb_sim_ws/src/mrs-uwb-sim/models/sdf/iris.sdf.jinja ~/mrs_uwb_sim_ws/P
 Before launching the simulations, you will need to source PX4 files on top of the `devel/setup,bash`.
 A script in this repo does both. Move it to your workspace root and source it:
 ```
-mv ~/mrs_uwb_sim_ws/src/mrs-uwb-sim/source_all.bash
+mv ~/mrs_uwb_sim_ws/src/mrs-uwb-sim/source_all.bash ~/mrs_uwb_sim_ws/source_all.bash
 cd ~/mrs_uwb_sim_ws
 source source_all.bash
 ```
