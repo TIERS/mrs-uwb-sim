@@ -112,46 +112,12 @@ The basic parameters defining the position are the following:
 ### UWB noise simulation
 
 `TODO`
-### Add more mobile robots (Husky)
-1. Open the launch file in ` ./launch/scenarios/scenarioDroneMobile_px4.launch`.
-2. Copy the code block shown in the launch file which looks like the picture below. 
-   ![Codes blocks needs to be added](./images/add_mobile_robot_conf.png)
-3. Change the configuration shown in the picture above
 
-### Add more drones (PX4-based)
-1. Open the launch file in ` ./launch/scenarios/scenarioDroneMobile_px4.launch`.
-2. Copy the code block shown in the launch file which looks like the picture below. 
-   ![Codes blocks needs to be added](./images/add_drone_conf.png)
-3. Change the configuration shown in the picture above
-
-### Change Gazebo world
-
-`TO DO`
-
-## Simulation Launch
-1. Set PX4 environment
-```
-cd PX4-Autopilot
-source Tools/setup_gazebo.bash $(pwd) $(pwd)/build/px4_sitl_default
-export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:$(pwd)
-export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:$(pwd)/Tools/sitl_gazebo
-```
-
-2. launch the UAV and UGV simulation scenario
-```
-roslaunch uwb_multi_robot_sim scenarioDroneMobile_px4.launch
-```
-
-## Robot Control
-
-### PX4 Control Fly Simulate
-```
-export ROS_NAMESPACE=uav0 # according to the robot you want to control
-roslaunch uwb_multi_robot_sim fly_simulate.launch
-```
-
-### Keyboard Control
-```
-export ROS_NAMESPACE=uav0 # according to the robot you want to control
-rosrun teleop_twist_keyboard teleop_twist_keyboard.py
-``` 
+### Add more mobile robots (Husky and PX4 Iris)
+1. Open the launch file in ` ./launch/tiers_mrs_px4.launch`.
+2. Add as many code blocks for the `husky` and `iris` vehicles as shown in the image
+   ![Sampla robots in launch file](./images/add_robots_sample.png)
+3. Change at least the following configuration parameters:
+   - `x` and `y` to set the initial position
+   - `robot_namespace` for the Husky spawners (different for each robot), used as the robot's ROS namespace.
+   - `ID` and `ns` for the Iris spawners (different for each quadrotor), used as the robot's ROS namespace.
