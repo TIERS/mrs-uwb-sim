@@ -17,6 +17,8 @@ The simulator uses ClearPath Husky robots as ground units and PX4 iris quadrotor
 
 ![Simulator screenshot](./images/sim_view.png)
 
+This simulator uses parts of [ AUVSL / UWB-Jackal-World ](https://github.com/AUVSL/UWB-Jackal-World)
+
 ## Dependencies
 
 This package depends on `mavros` and `husky_gazebo` mainly. Install dependencies for ROS Melodic:
@@ -121,3 +123,7 @@ The basic parameters defining the position are the following:
    - `x` and `y` to set the initial position
    - `robot_namespace` for the Husky spawners (different for each robot), used as the robot's ROS namespace.
    - `ID` and `ns` for the Iris spawners (different for each quadrotor), used as the robot's ROS namespace.
+
+## License
+
+MIT
